@@ -17,16 +17,14 @@ public class NinjaFrogMovementTest
         Debug.Log("Scene Loaded");
     }
     [UnityTest]
-    public IEnumerator NinjaFrogFall()
+    public IEnumerator NinjaFrogWalk()
     {   
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         NinjaFrog = GameObject.Find("NinjaFrog");
         Ground = GameObject.Find("Ground");
-        Assert.That(NinjaFrog.transform.position.y > Ground.transform.position.y);
-       
+        Assert.That(NinjaFrog.GetComponent<Rigidbody2D>().linearVelocity == Vector2.zero, "Frog isn't moving");
     }
-
-
+    
     [TearDown]
     public void TearDown()
     {
